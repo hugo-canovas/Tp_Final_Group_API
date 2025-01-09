@@ -5,7 +5,7 @@ using tp_app_back.Models;
 
 namespace tp_app_back.Services
 {
-    public class GenericService<T> : IGenericService<T> where T : class, IBaseEntity
+    public class GenericService<T> : IGenericService<T> where T : class, BaseEntity
     {
 
         private readonly ApplicationDbContext _context;
