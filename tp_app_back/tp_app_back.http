@@ -1,0 +1,6 @@
+@tp_app_back_HostAddress = http://localhost:5212
+
+GET {{tp_app_back_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
