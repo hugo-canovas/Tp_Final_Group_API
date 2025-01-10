@@ -12,8 +12,8 @@ using tp_app_back.Data;
 namespace tp_app_back.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250110095353_initMigrationModels")]
-    partial class initMigrationModels
+    [Migration("20250110104041_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,8 +30,8 @@ namespace tp_app_back.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("EmployeeId", "RoleId");
 
@@ -186,11 +186,9 @@ namespace tp_app_back.Migrations
 
             modelBuilder.Entity("tp_app_back.Models.Role", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()

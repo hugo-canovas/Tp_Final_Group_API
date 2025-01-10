@@ -43,6 +43,20 @@ namespace tp_app_back.Data
                 .HasOne(l => l.Employee)
                 .WithMany(e => e.Leaves) 
                 .HasForeignKey(l => l.EmployeeId);
+
+            //create user and admin role
+            //TODO remove comment on first update data base
+            //modelBuilder.Entity<Role>().HasData(new Role()
+            //{
+            //    Id = Guid.NewGuid(),
+            //    Name = "User"
+            //});
+
+            //modelBuilder.Entity<Role>().HasData(new Role()
+            //{
+            //    Id = Guid.NewGuid(),
+            //    Name = "Admin"
+            //});
         }
     }
 }
