@@ -7,7 +7,7 @@ namespace tp_app_back.Models
         public bool IsActive { get; set; }
         public List<Role> Roles { get; set; }
         public List<Project> Projects { get; set; }
-        public List<Leaves> Leaves { get; set; }
+        public List<Leave> Leaves { get; set; }
         public List<Attendance> Attendances { get; set; }
     }
 }
