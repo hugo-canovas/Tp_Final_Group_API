@@ -27,8 +27,8 @@ namespace tp_app_back.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("EmployeeId", "RoleId");
 
@@ -183,11 +183,9 @@ namespace tp_app_back.Migrations
 
             modelBuilder.Entity("tp_app_back.Models.Role", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -196,6 +194,18 @@ namespace tp_app_back.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("32a792b9-9e3e-4aaa-995e-07f881e9cb01"),
+                            Name = "User"
+                        },
+                        new
+                        {
+                            Id = new Guid("486a2041-b6e9-4dc0-9d85-d141bed9c9b8"),
+                            Name = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("EmployeeRole", b =>
