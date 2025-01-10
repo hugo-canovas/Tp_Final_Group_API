@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
 using tp_app_back.Interfaces;
 using tp_app_back.Models;
 
