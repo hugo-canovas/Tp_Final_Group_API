@@ -12,8 +12,8 @@ import { Employee } from './models/employee.interface';
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css'],
 })
-export class EmployeeComponent implements OnInit {
-  public employees$: Observable<Employee[]>;
+export class EmployeeComponent {
+  public employees$: Observable<Employee[]> = new Observable<Employee[]>();
   public isLoading: boolean = true;
 
   constructor(
@@ -21,10 +21,6 @@ export class EmployeeComponent implements OnInit {
     private employeeService: EmployeeService,
     private toastr: ToastrService
   ) {
-    this.employees$ = this.employeeService.getAllEmployess();
-  }
-
-  ngOnInit(): void {
     this.loadEmployees();
   }
 
@@ -64,6 +60,48 @@ export class EmployeeComponent implements OnInit {
           },
         });
       }
+    });
+  }
+
+  editEmployee(employee: Employee) {
+    console.log(employee);
+    const dialogRef = this.dialogRef.open(AddEmployeeComponent, {
+      data: employee,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      if (result) {
+        this.employeeService.updateEmployee(result).subscribe({
+          next: () => {
+            this.toastr.success('', 'Employee updated successfully', {
+              closeButton: true,
+            });
+            this.loadEmployees();
+          },
+          error: (err: HttpErrorResponse) => {
+            this.toastr.error('', 'Something went wrong: ' + err.message, {
+              closeButton: true,
+            });
+          },
+        });
+      }
+    });
+  }
+
+  deleteEmployee(id: number) {
+    this.employeeService.deleteEmployee(id).subscribe({
+      next: () => {
+        this.toastr.success('', 'Employee deleted successfully', {
+          closeButton: true,
+        });
+        this.loadEmployees();
+      },
+      error: (err: HttpErrorResponse) => {
+        this.toastr.error('', 'Something went wrong: ' + err.message, {
+          closeButton: true,
+        });
+      },
     });
   }
 }

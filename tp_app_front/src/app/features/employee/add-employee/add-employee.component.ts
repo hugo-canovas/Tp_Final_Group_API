@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Employee } from '../models/employee.interface';
 
 @Component({
   selector: 'app-add-employee',
@@ -9,14 +10,16 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddEmployeeComponent {
   addEmployeeForm = this.fb.group({
-    firstName: [''],
-    lastName: [''],
-    isActive: [true],
+    id: [this.data?.id || null],
+    firstName: [this.data?.firstName || ''],
+    lastName: [this.data?.lastName || ''],
+    isActive: [this.data?.isActive ?? true],
   });
 
   constructor(
     private fb: FormBuilder,
-    public dialogRef: MatDialogRef<AddEmployeeComponent>
+    public dialogRef: MatDialogRef<AddEmployeeComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Employee | null
   ) {}
 
   onSubmit() {
