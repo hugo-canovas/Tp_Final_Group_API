@@ -43,17 +43,11 @@ namespace tp_app_back.Services
 
         public async Task<Employee> UpdateEmployeeAsync(Employee employee)
         {
-            var updatedEmployee = new Employee
-            {
-                FirstName = employee.FirstName,
-                LastName = employee.LastName,
-                IsActive = employee.IsActive,
-                UpdatedOn = DateTime.UtcNow,
-            };
-            
+            employee.UpdatedOn = DateTime.UtcNow;
+
             await _genericService.UpdateAsync(employee);
 
-            return updatedEmployee;
+            return employee;
         }
 
         public async Task<bool> DeleteEmployeeAsync(int id)
