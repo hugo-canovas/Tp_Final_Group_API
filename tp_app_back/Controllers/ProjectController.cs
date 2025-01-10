@@ -30,7 +30,7 @@ namespace tp_app_back.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProject(int id)
+        public async Task<IActionResult> GetProjectById(int id)
         {
             var getProject = await _projectService.GetProjectByIdAsync(id);
             return Ok(getProject);

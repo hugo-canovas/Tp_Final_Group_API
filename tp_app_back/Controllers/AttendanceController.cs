@@ -30,7 +30,7 @@ namespace tp_app_back.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAttendance(int id)
+        public async Task<IActionResult> GetAttendanceById(int id)
         {
             var getAttendance = await _attendanceService.GetAttendanceByIdAsync(id);
             return Ok(getAttendance);

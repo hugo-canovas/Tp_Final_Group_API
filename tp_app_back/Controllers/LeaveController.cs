@@ -30,7 +30,7 @@ namespace tp_app_back.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetLeave(int id)
+        public async Task<IActionResult> GetLeaveById(int id)
         {
             var getLeave = await _leaveService.GetLeaveByIdAsync(id);
             return Ok(getLeave);
