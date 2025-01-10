@@ -10,7 +10,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class HomeComponent {
   private subscription: Subscription = new Subscription();
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService) {
+    this.getAllEmployee();
+  }
 
   getAllEmployee() {
     this.subscription.add(
