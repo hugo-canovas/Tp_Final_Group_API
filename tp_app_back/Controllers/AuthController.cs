@@ -13,17 +13,17 @@ namespace tp_app_back.Controllers
             _jwtService = jwtService;
         }
 
-        [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequest request)
-        {
-            if (request.Username == "test" && request.Password == "password")
-            {
-                var token = _jwtService.GenerateToken(request.Username);
-                return Ok(new { token });
-            }
+        //[HttpPost("login")]
+        //public IActionResult Login([FromBody] LoginRequest request)
+        //{
+        //    if (request.Username == "test" && request.Password == "password")
+        //    {
+        //        var token = _jwtService.GenerateToken(request.Username);
+        //        return Ok(new { token });
+        //    }
 
-            return Unauthorized();
-        }
+        //    return Unauthorized();
+        //}
     }
 
     public class LoginRequest

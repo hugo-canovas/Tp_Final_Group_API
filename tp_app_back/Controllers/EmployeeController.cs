@@ -38,20 +38,20 @@ namespace tp_app_back.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEmployee(int id, [FromBody] Employee employee)
+        public async Task<IActionResult> UpdateEmployee(int id, [FromBody] EmployeeDto employee)
         {
             var getEmployee = await _employeeService.GetEmployeeByIdAsync(id);
 
-            if (getEmployee != null)
+            if (getEmployee == null)
             {
                 return NotFound();
             }
-            if(id != employee.Id)
+            if(id != getEmployee.Id)
             {
                 return BadRequest();
             }
 
-            await _employeeService.UpdateEmployeeAsync(employee);
+            await _employeeService.UpdateEmployeeAsync(id, employee);
             return Ok(getEmployee);
         }
 

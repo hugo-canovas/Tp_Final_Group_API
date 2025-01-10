@@ -25,15 +25,17 @@ namespace tp_app_back.Services
             {
                 FirstName = employeeDto.FirstName,
                 LastName = employeeDto.LastName,
-                IsActive = employeeDto.IsActive
+                IsActive = employeeDto.IsActive,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
             };
 
-            var newEmployee = await _genericService.CreateAsync(employee);
+            await _genericService.CreateAsync(employee);
 
-            return newEmployee;
+            return employee;
         }
 
-        public async Task<Employee> GetEmployeeByIdAsync(int id)
+        public async Task<Employee?> GetEmployeeByIdAsync(int id)
         {
             var employee = await _genericService.GetByIdAsync(id);
             if (employee == null) return null;
@@ -41,13 +43,20 @@ namespace tp_app_back.Services
             return employee;
         }
 
-        public async Task<Employee> UpdateEmployeeAsync(Employee employee)
+        public async Task<Employee> UpdateEmployeeAsync(int id, EmployeeDto employeeDto)
         {
-            employee.UpdatedOn = DateTime.UtcNow;
+            var existingEmployee = await GetEmployeeByIdAsync(id);
 
-            await _genericService.UpdateAsync(employee);
+            if (existingEmployee == null) return null;
 
-            return employee;
+            existingEmployee.FirstName = employeeDto.FirstName;
+            existingEmployee.LastName = employeeDto.LastName;
+            existingEmployee.IsActive = employeeDto.IsActive;
+            existingEmployee.UpdatedOn = DateTime.UtcNow;
+
+            await _genericService.UpdateAsync(existingEmployee);
+
+            return existingEmployee;
         }
 
         public async Task<bool> DeleteEmployeeAsync(int id)
