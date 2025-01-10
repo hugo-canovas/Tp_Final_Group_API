@@ -36,13 +36,13 @@ namespace tp_app_back.Data
 
             modelBuilder.Entity<Attendance>()
                 .HasOne(a => a.Employee)
-                .WithMany()
+                .WithMany(e => e.Attendances) 
                 .HasForeignKey(a => a.EmployeeId);
 
             modelBuilder.Entity<Leave>()
-                .HasOne(a => a.Employee)
-                .WithMany()
-                .HasForeignKey(a => a.EmployeeId);
+                .HasOne(l => l.Employee)
+                .WithMany(e => e.Leaves) 
+                .HasForeignKey(l => l.EmployeeId);
         }
     }
 }

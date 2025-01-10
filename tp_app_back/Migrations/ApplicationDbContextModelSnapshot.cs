@@ -231,7 +231,7 @@ namespace tp_app_back.Migrations
             modelBuilder.Entity("tp_app_back.Models.Attendance", b =>
                 {
                     b.HasOne("tp_app_back.Models.Employee", "Employee")
-                        .WithMany()
+                        .WithMany("Attendances")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -242,7 +242,7 @@ namespace tp_app_back.Migrations
             modelBuilder.Entity("tp_app_back.Models.Leave", b =>
                 {
                     b.HasOne("tp_app_back.Models.Employee", "Employee")
-                        .WithMany()
+                        .WithMany("Leaves")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
