@@ -17,19 +17,9 @@
   <button mat-icon-button [routerLink]="['/']" aria-label="Home">
     <mat-icon>home</mat-icon>
   </button>
-  <!-- <button mat-icon-button [routerLink]="['/employee']" aria-label="employee">
-    <mat-icon>edit</mat-icon>
-  </button> -->
-
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>edit</mat-icon>
+  <button mat-icon-button [routerLink]="['/employee']" aria-label="employee">
+    <mat-icon>group</mat-icon>
   </button>
-  <mat-menu #menu="matMenu">
-    <button [routerLink]="['/employee/add-employee']" aria-label="add-employee">
-      Employee
-    </button>
-    <button mat-menu-item>Item 2</button>
-  </mat-menu>
 
   <!-- Bouton favori -->
   <button

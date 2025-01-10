@@ -1,1 +1,19 @@
-<p>employee works!</p>
+<button type="button" mat-button (click)="addEmployee()" class="add-button">
+  <mat-icon>add</mat-icon>
+</button>
+@if(isLoading){
+<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}@else { @for( employee of employees$ | async ; track $index ){
+<div class="employee-list">
+  <mat-card class="example-card" appearance="outlined" class="employee-card">
+    <mat-card-header>
+      <mat-card-title
+        >{{ employee.firstName }} {{ employee.lastName }}</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ employee.createdOn | date }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+} }

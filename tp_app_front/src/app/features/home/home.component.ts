@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EmployeeService } from './services/employee.service';
+import { EmployeeService } from '../employee/services/employee.service';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -18,10 +18,10 @@ export class HomeComponent {
     this.subscription.add(
       this.employeeService.getAllEmployess().subscribe({
         next: (res) => {
-          console.log(res);
+          // console.log(res);
         },
         error: (err: HttpErrorResponse) => {
-          console.log(err);
+          // console.log(err);
         },
       })
     );
