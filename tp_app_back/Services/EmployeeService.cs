@@ -1,4 +1,5 @@
-﻿using tp_app_back.Interfaces;
+﻿using tp_app_back.DTOs;
+using tp_app_back.Interfaces;
 using tp_app_back.Models;
 
 namespace tp_app_back.Services
@@ -18,29 +19,40 @@ namespace tp_app_back.Services
             return employees;
         }
 
-        public async Task<Employee> CreateEmployeeAsync(Employee employee)
+        public async Task<Employee> CreateEmployeeAsync(EmployeeDto employeeDto)
         {
+            var employee = new Employee
+            {
+                FirstName = employeeDto.FirstName,
+                LastName = employeeDto.LastName,
+                IsActive = employeeDto.IsActive
+            };
+
             var newEmployee = await _genericService.CreateAsync(employee);
-            return newEmployee;    
+
+            return newEmployee;
         }
 
         public async Task<Employee> GetEmployeeByIdAsync(int id)
         {
-            var getEmployee = await _genericService.GetByIdAsync(id);
-            return getEmployee;
+            var employee = await _genericService.GetByIdAsync(id);
+            if (employee == null) return null;
+
+            return employee;
         }
 
         public async Task<Employee> UpdateEmployeeAsync(Employee employee)
         {
-            var updateEmployee = await _genericService.UpdateAsync(employee);
-            return updateEmployee;
+            employee.UpdatedOn = DateTime.UtcNow;
+
+            await _genericService.UpdateAsync(employee);
+
+            return employee;
         }
 
         public async Task<bool> DeleteEmployeeAsync(int id)
         {
-            var oldEmployee = await _genericService.DeleteAsync(id);
-            return oldEmployee;
+            return await _genericService.DeleteAsync(id);
         }
-
     }
 }

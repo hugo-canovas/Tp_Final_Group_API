@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using tp_app_back.DTOs;
 using tp_app_back.Interfaces;
 using tp_app_back.Models;
 
@@ -23,7 +24,7 @@ namespace tp_app_back.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateEmployee([FromBody] Employee employee)
+        public async Task<IActionResult> CreateEmployee([FromBody] EmployeeDto employee)
         {
             var newEmployee = await _employeeService.CreateEmployeeAsync(employee);
             return Ok(newEmployee);
