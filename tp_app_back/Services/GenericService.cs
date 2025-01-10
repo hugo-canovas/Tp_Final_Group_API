@@ -32,7 +32,7 @@ namespace tp_app_back.Services
             return entity;
         }
 
-        public async Task<T> UpdateAsync(int id, T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
             _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
