@@ -9,6 +9,8 @@ namespace tp_app_back.Data
         public DbSet<Project> Projects { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
+        public DbSet<Leave> Leaves { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,7 +29,7 @@ namespace tp_app_back.Data
                 .HasMany(e => e.Roles)
                 .WithMany(r => r.Employees)
                 .UsingEntity<Dictionary<string, object>>(
-                    "EmployeeRole", // Nom de la table intermédiaire
+                    "EmployeeRole",
                     j => j.HasOne<Role>().WithMany().HasForeignKey("RoleId"),
                     j => j.HasOne<Employee>().WithMany().HasForeignKey("EmployeeId")
                 );
