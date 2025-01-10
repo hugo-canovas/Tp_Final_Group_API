@@ -23,11 +23,11 @@ builder.Services.AddSwaggerGen();
 // Ajoutez le service CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngularApp", policy =>
+    options.AddPolicy("AllowAll", builder =>
     {
-        policy.WithOrigins("http://localhost:4200") 
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
     });
 });
 
@@ -43,7 +43,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // Appliquez la politique CORS
-app.UseCors("AllowAngularApp");
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
