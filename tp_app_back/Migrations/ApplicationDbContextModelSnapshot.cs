@@ -66,9 +66,6 @@ namespace tp_app_back.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("EmployeeId1")
-                        .HasColumnType("int");
-
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -79,8 +76,6 @@ namespace tp_app_back.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
-
-                    b.HasIndex("EmployeeId1");
 
                     b.ToTable("Attendances");
                 });
@@ -129,9 +124,6 @@ namespace tp_app_back.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("EmployeeId1")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("End_Date")
                         .HasColumnType("datetime2");
 
@@ -148,8 +140,6 @@ namespace tp_app_back.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
-
-                    b.HasIndex("EmployeeId1");
 
                     b.ToTable("Leaves");
                 });
@@ -246,10 +236,6 @@ namespace tp_app_back.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("tp_app_back.Models.Employee", null)
-                        .WithMany("Attendances")
-                        .HasForeignKey("EmployeeId1");
-
                     b.Navigation("Employee");
                 });
 
@@ -260,10 +246,6 @@ namespace tp_app_back.Migrations
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("tp_app_back.Models.Employee", null)
-                        .WithMany("Leaves")
-                        .HasForeignKey("EmployeeId1");
 
                     b.Navigation("Employee");
                 });
