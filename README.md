@@ -12,6 +12,6 @@ Run `Update-Database`to update your database.
 
 ### Starting the project
 
-Uuse `npm install` to install npm dependencies.
+Use `npm install` to install npm dependencies.
 
 Don't forget to start your npm.
