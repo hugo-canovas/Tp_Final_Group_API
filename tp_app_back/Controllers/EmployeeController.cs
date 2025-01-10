@@ -38,7 +38,7 @@ namespace tp_app_back.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEmployee(int id, [FromBody] EmployeeDto employee)
+        public async Task<IActionResult> UpdateEmployee(int id, [FromBody] Employee employee)
         {
             var getEmployee = await _employeeService.GetEmployeeByIdAsync(id);
 
