@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 //Connection SQL with Lazy Loading
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options
-    .UseLazyLoadingProxies()
+    //.UseLazyLoadingProxies()
     .UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.

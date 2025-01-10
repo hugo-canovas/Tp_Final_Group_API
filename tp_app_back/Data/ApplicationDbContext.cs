@@ -33,6 +33,16 @@ namespace tp_app_back.Data
                     j => j.HasOne<Role>().WithMany().HasForeignKey("RoleId"),
                     j => j.HasOne<Employee>().WithMany().HasForeignKey("EmployeeId")
                 );
+
+            modelBuilder.Entity<Attendance>()
+                .HasOne(a => a.Employee)
+                .WithMany()
+                .HasForeignKey(a => a.EmployeeId);
+
+            modelBuilder.Entity<Leave>()
+                .HasOne(a => a.Employee)
+                .WithMany()
+                .HasForeignKey(a => a.EmployeeId);
         }
     }
 }
