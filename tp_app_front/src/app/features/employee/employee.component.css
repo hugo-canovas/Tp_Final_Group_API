@@ -1,0 +1,67 @@
+/* Bouton d'ajout avec icône */
+.add-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #7e57c2; /* Deep Purple */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button mat-icon {
+    margin-right: 8px;
+  }
+  
+  .add-button:hover {
+    background-color: #5e35b1; /* Deep Purple Hover */
+  }
+  
+  /* Barre de progression */
+  .loading-bar {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #ffca28; /* Amber */
+  }
+  
+  /* Liste des employés */
+  .employee-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Marge entre les cartes */
+    justify-content: flex-start;
+  }
+  
+  /* Style des cartes d'employé */
+  .employee-card {
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+  }
+  
+  .employee-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  mat-card-header {
+    background-color: #7e57c2; /* Deep Purple */
+    color: white;
+  }
+  
+  mat-card-title {
+    font-weight: bold;
+  }
+  
+  mat-card-content {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* Modifier les couleurs de fond dans les cartes pour un style plus personnalisé */
+  mat-card-content p {
+    color: #424242; /* Gris foncé */
+  }
+  
