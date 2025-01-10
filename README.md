@@ -4,8 +4,6 @@
 
 ### Initializing database
 
-Run `add-migration initDatabase` to init your database.
-
 Run `Update-Database`to update your database.
 
 ## Front
@@ -14,4 +12,4 @@ Run `Update-Database`to update your database.
 
 Use `npm install` to install npm dependencies.
 
-Don't forget to start your npm.
+Don't forget to start your npm with `npm start`.
