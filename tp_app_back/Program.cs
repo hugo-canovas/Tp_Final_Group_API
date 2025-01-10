@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using tp_app_back.Data;
 using tp_app_back.Interfaces;
 using tp_app_back.Services;
@@ -10,6 +11,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options
     //.UseLazyLoadingProxies()
     .UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//remove warning to create roles
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.ConfigureWarnings(warnings =>
+//        warnings.Ignore(RelationalEventId.PendingModelChangesWarning)));
 
 // Add services to the container.
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
