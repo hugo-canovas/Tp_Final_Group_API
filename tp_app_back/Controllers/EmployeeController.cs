@@ -30,7 +30,7 @@ namespace tp_app_back.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetEmployee(int id)
+        public async Task<IActionResult> GetEmployeeById(int id)
         {
             var getEmployee = await _employeeService.GetEmployeeByIdAsync(id);
             return Ok(getEmployee);

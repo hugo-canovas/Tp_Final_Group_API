@@ -10,6 +10,5 @@ namespace tp_app_back.Interfaces
         public Task<Employee> UpdateEmployeeAsync(Employee employee);
         public Task<bool> DeleteEmployeeAsync(int id);
 
-
     }
 }
