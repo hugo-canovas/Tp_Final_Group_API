@@ -13,4 +13,8 @@ export class EmployeeService {
   getAllEmployess(): Observable<Employee[]> {
     return this.http.get<Employee[]>(environment.URL_EMPLOYESS);
   }
+
+  createEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(environment.URL_CREATE_EMPLOYEE, employee);
+  }
 }

@@ -23,8 +23,8 @@ namespace tp_app_back.Controllers
             return Ok(employees);
         }
 
-        [HttpPost("{employee}")]
-        public async Task<IActionResult> CreateEmployee(EmployeeDto employee)
+        [HttpPost]
+        public async Task<IActionResult> CreateEmployee([FromBody] EmployeeDto employee)
         {
             var newEmployee = await _employeeService.CreateEmployeeAsync(employee);
             return Ok(newEmployee);

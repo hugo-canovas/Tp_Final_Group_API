@@ -34,7 +34,7 @@ builder.Services.AddAuthentication(options =>
 
     if (string.IsNullOrEmpty(secretKey) || string.IsNullOrEmpty(issuer) || string.IsNullOrEmpty(audience))
     {
-        throw new ArgumentException("les paramètres jwt doivent être définis");
+        throw new ArgumentException("les paramÃ¨tres jwt doivent Ãªtre dÃ©finis");
     }
 
     options.TokenValidationParameters = new TokenValidationParameters
@@ -62,7 +62,7 @@ builder.Services.AddSwaggerGen();
 // Ajoutez le service CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngularApp", policy =>
+    options.AddPolicy("AllowAll", builder =>
     {
         policy.WithOrigins("http://localhost:4200")
               .AllowAnyHeader()
@@ -82,7 +82,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // Appliquez la politique CORS
-app.UseCors("AllowAngularApp");
+app.UseCors("AllowAll");
 
 // Add Authentication Middleware
 app.UseAuthentication();

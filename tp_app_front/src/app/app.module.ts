@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './features/home/home.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,12 @@ import { HomeModule } from './features/home/home.module';
     SharedModule,
     BrowserAnimationsModule,
     HomeModule,
+    ToastrModule.forRoot({
+      // Configuration globale de Toastr
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
   ],
   bootstrap: [AppComponent],
 })
