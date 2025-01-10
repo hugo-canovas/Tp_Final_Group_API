@@ -12,8 +12,8 @@ using tp_app_back.Data;
 namespace tp_app_back.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250110084048_initMigrationModel")]
-    partial class initMigrationModel
+    [Migration("20250110095353_initMigrationModels")]
+    partial class initMigrationModels
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,9 +69,6 @@ namespace tp_app_back.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("EmployeeId1")
-                        .HasColumnType("int");
-
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -82,8 +79,6 @@ namespace tp_app_back.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
-
-                    b.HasIndex("EmployeeId1");
 
                     b.ToTable("Attendances");
                 });
@@ -132,9 +127,6 @@ namespace tp_app_back.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("EmployeeId1")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("End_Date")
                         .HasColumnType("datetime2");
 
@@ -151,8 +143,6 @@ namespace tp_app_back.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
-
-                    b.HasIndex("EmployeeId1");
 
                     b.ToTable("Leaves");
                 });
@@ -244,14 +234,10 @@ namespace tp_app_back.Migrations
             modelBuilder.Entity("tp_app_back.Models.Attendance", b =>
                 {
                     b.HasOne("tp_app_back.Models.Employee", "Employee")
-                        .WithMany()
+                        .WithMany("Attendances")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("tp_app_back.Models.Employee", null)
-                        .WithMany("Attendances")
-                        .HasForeignKey("EmployeeId1");
 
                     b.Navigation("Employee");
                 });
@@ -259,14 +245,10 @@ namespace tp_app_back.Migrations
             modelBuilder.Entity("tp_app_back.Models.Leave", b =>
                 {
                     b.HasOne("tp_app_back.Models.Employee", "Employee")
-                        .WithMany()
+                        .WithMany("Leaves")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("tp_app_back.Models.Employee", null)
-                        .WithMany("Leaves")
-                        .HasForeignKey("EmployeeId1");
 
                     b.Navigation("Employee");
                 });

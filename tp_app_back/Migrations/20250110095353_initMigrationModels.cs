@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace tp_app_back.Migrations
 {
     /// <inheritdoc />
-    public partial class initMigrationModel : Migration
+    public partial class initMigrationModels : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
